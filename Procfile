@@ -1,0 +1,1 @@
+web: gunicorn dan5446.wsgi --log-file -

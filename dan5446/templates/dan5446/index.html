@@ -1,0 +1,27 @@
+{% extends "dan5446/base.html" %}
+{%  load activity_tags %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <body>
+    {% include "dan5446/main_nav.html" %}
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Recent Activity</div>
+            {% activity_stream 'actor' user %}
+            <ul class="list-group">
+                {% for action in stream %}
+                    <li class="list-group-item">{% display_action action %}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6"><p class="bg-info text-center" data-toggle="tooltip" title="This note is almost totally useless" style="padding: 15px;">An note from the IT department</p>
+        <div class="panel panel-default">
+            <div class="panel-heading">Add an ingredient</div>
+            <div class="" style="padding: 15px">{% crispy form %}</div>
+        </div>
+    </div>
+    </body>
+{% endblock content %}
